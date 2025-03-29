@@ -13,7 +13,7 @@ import logging  # Added for file logging
 
 # Set up logging to file
 logging.basicConfig(
-    filename='fleet_logs.txt',
+    filename='src/logs/fleet_logs.txt',
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     datefmt='%Y-%m-%d %H:%M:%S'

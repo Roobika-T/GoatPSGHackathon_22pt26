@@ -1,0 +1,362 @@
+2025-03-29 19:26:02 - INFO - Robot 1: Initiating move to 9 from 6
+2025-03-29 19:26:02 - INFO - Robot 1: Finding path from 6 to 9 at time 0
+2025-03-29 19:26:02 - INFO - Robot 1: At vertex 6, neighbors: [('7', 1.3872403113686722), ('5', 1.0111626170132089)]
+2025-03-29 19:26:02 - INFO - Robot 1: Reserved lane 6-7 from 0 to 0.9825233422093215
+2025-03-29 19:26:02 - INFO - Robot 1: Reserved lane 6-5 from 0 to 0.7161634980205765
+2025-03-29 19:26:02 - INFO - Robot 1: At vertex 7, neighbors: [('1', 1.4261010743018891), ('6', 1.3872403113686722)]
+2025-03-29 19:26:02 - INFO - Robot 1: Reserved lane 7-1 from 0.9825233422093215 to 1.9925701108682952
+2025-03-29 19:26:02 - INFO - Robot 1: At vertex 1, neighbors: [('2', 1.0935075162476025), ('7', 1.4261010743018891), ('0', 1.0971132079111068), ('8', 1.1887830568383788)]
+2025-03-29 19:26:02 - INFO - Robot 1: Reserved lane 1-2 from 1.9925701108682952 to 2.7670550006092745
+2025-03-29 19:26:02 - INFO - Robot 1: Reserved lane 1-0 from 1.9925701108682952 to 2.769608758739838
+2025-03-29 19:26:02 - INFO - Robot 1: Reserved lane 1-8 from 1.9925701108682952 to 2.8345346159325144
+2025-03-29 19:26:02 - INFO - Robot 1: At vertex 8, neighbors: [('9', 1.1976919113837243), ('1', 1.1887830568383788)]
+2025-03-29 19:26:02 - INFO - Robot 1: Reserved lane 8-9 from 2.8345346159325144 to 3.682808883963839
+2025-03-29 19:26:02 - INFO - Robot 1: Path found: ['6', '7', '1', '8', '9']
+2025-03-29 19:26:02 - INFO - Robot 1: Path found to 9: ['6', '7', '1', '8', '9']
+2025-03-29 19:26:02 - INFO - Robot 1: Attempting to move from 6 to 7 (lane 6-7) at time 0
+2025-03-29 19:26:02 - INFO - Robot 1: Reserved lane 6-7 from 0 to 0.9825233422093215
+2025-03-29 19:26:02 - INFO - Robot 1: Starting movement to 7
+2025-03-29 19:26:02 - INFO - Lane 6-7 reservations cleared at time 1743256562.454117
+2025-03-29 19:26:02 - INFO - Lane 6-5 reservations cleared at time 1743256562.454117
+2025-03-29 19:26:02 - INFO - Lane 7-1 reservations cleared at time 1743256562.454117
+2025-03-29 19:26:02 - INFO - Lane 1-2 reservations cleared at time 1743256562.454117
+2025-03-29 19:26:02 - INFO - Lane 1-0 reservations cleared at time 1743256562.454117
+2025-03-29 19:26:02 - INFO - Lane 1-8 reservations cleared at time 1743256562.454117
+2025-03-29 19:26:02 - INFO - Lane 8-9 reservations cleared at time 1743256562.454117
+2025-03-29 19:26:02 - INFO - Robot 1: Moved to 7, continuing to next vertex
+2025-03-29 19:26:02 - INFO - Robot 1: Attempting to move from 7 to 1 (lane 7-1) at time 1743256562.9153442
+2025-03-29 19:26:02 - INFO - Robot 1: Reserved lane 7-1 from 1743256562.9153442 to 1743256563.925391
+2025-03-29 19:26:02 - INFO - Robot 1: Starting movement to 1
+2025-03-29 19:26:03 - INFO - Robot 1: Moved to 1, continuing to next vertex
+2025-03-29 19:26:03 - INFO - Robot 1: Attempting to move from 1 to 8 (lane 1-8) at time 1743256563.4157372
+2025-03-29 19:26:03 - INFO - Robot 1: Reserved lane 1-8 from 1743256563.4157372 to 1743256564.2577016
+2025-03-29 19:26:03 - INFO - Robot 1: Starting movement to 8
+2025-03-29 19:26:03 - INFO - Robot 1: Moved to 8, continuing to next vertex
+2025-03-29 19:26:03 - INFO - Robot 1: Attempting to move from 8 to 9 (lane 8-9) at time 1743256563.8068883
+2025-03-29 19:26:03 - INFO - Robot 1: Reserved lane 8-9 from 1743256563.8068883 to 1743256564.6551626
+2025-03-29 19:26:03 - INFO - Robot 1: Starting movement to 9
+2025-03-29 19:26:03 - INFO - Lane 7-1 reservations cleared at time 1743256563.9495482
+2025-03-29 19:26:04 - INFO - Robot 1: Moved to 9, continuing to next vertex
+2025-03-29 19:26:04 - INFO - Robot 1: Successfully reached destination 9
+2025-03-29 19:26:07 - INFO - Robot 1: Initiating move to 6 from 9
+2025-03-29 19:26:07 - INFO - Robot 1: Finding path from 9 to 6 at time 1743256564.2033336
+2025-03-29 19:26:07 - INFO - Robot 1: At vertex 9, neighbors: [('10', 1.0437756817980584), ('8', 1.1976919113837243)]
+2025-03-29 19:26:07 - INFO - Robot 1: Reserved lane 9-10 from 1743256564.2033336 to 1743256564.9425955
+2025-03-29 19:26:07 - INFO - Robot 1: Lane 9-8 blocked by opposite lane 8-9 (Robot 1)
+2025-03-29 19:26:07 - INFO - Robot 1: Cannot reserve lane 9-8 from 9 to 8 at time 1743256564.2033336
+2025-03-29 19:26:07 - INFO - Robot 1: At vertex 10, neighbors: [('9', 1.0437756817980584), ('11', 1.2424150968110463)]
+2025-03-29 19:26:07 - INFO - Robot 1: Reserved lane 10-11 from 1743256564.9425955 to 1743256565.8225453
+2025-03-29 19:26:07 - INFO - Robot 1: At vertex 11, neighbors: [('10', 1.2424150968110463), ('12', 1.2903792924330413)]
+2025-03-29 19:26:07 - INFO - Robot 1: Reserved lane 11-12 from 1743256565.8225453 to 1743256566.7364662
+2025-03-29 19:26:07 - INFO - Robot 1: At vertex 12, neighbors: [('13', 1.1219287812178638), ('11', 1.2903792924330413)]
+2025-03-29 19:26:07 - INFO - Robot 1: Reserved lane 12-13 from 1743256566.7364662 to 1743256567.5310807
+2025-03-29 19:26:07 - INFO - Robot 1: At vertex 13, neighbors: [('12', 1.1219287812178638), ('0', 0.8965419053368349)]
+2025-03-29 19:26:07 - INFO - Robot 1: Reserved lane 13-0 from 1743256567.5310807 to 1743256568.1660633
+2025-03-29 19:26:07 - INFO - Robot 1: At vertex 0, neighbors: [('13', 0.8965419053368349), ('1', 1.0971132079111068)]
+2025-03-29 19:26:07 - INFO - Robot 1: Reserved lane 0-1 from 1743256568.1660633 to 1743256568.943102
+2025-03-29 19:26:07 - INFO - Robot 1: At vertex 1, neighbors: [('2', 1.0935075162476025), ('7', 1.4261010743018891), ('0', 1.0971132079111068), ('8', 1.1887830568383788)]
+2025-03-29 19:26:07 - INFO - Robot 1: Reserved lane 1-2 from 1743256568.943102 to 1743256569.7175868
+2025-03-29 19:26:07 - INFO - Robot 1: Reserved lane 1-7 from 1743256568.943102 to 1743256569.9531486
+2025-03-29 19:26:07 - INFO - Robot 1: Reserved lane 1-8 from 1743256568.943102 to 1743256569.7850664
+2025-03-29 19:26:07 - INFO - Robot 1: At vertex 7, neighbors: [('1', 1.4261010743018891), ('6', 1.3872403113686722)]
+2025-03-29 19:26:07 - INFO - Robot 1: Reserved lane 7-6 from 1743256569.9531486 to 1743256570.935672
+2025-03-29 19:26:07 - INFO - Robot 1: Path found: ['9', '10', '11', '12', '13', '0', '1', '7', '6']
+2025-03-29 19:26:07 - INFO - Robot 1: Path found to 6: ['9', '10', '11', '12', '13', '0', '1', '7', '6']
+2025-03-29 19:26:07 - INFO - Robot 1: Attempting to move from 9 to 10 (lane 9-10) at time 1743256564.2033336
+2025-03-29 19:26:07 - INFO - Robot 1: Reserved lane 9-10 from 1743256564.2033336 to 1743256564.9425955
+2025-03-29 19:26:07 - INFO - Robot 1: Starting movement to 10
+2025-03-29 19:26:07 - INFO - Lane 8-9 reservations cleared at time 1743256567.6301677
+2025-03-29 19:26:07 - INFO - Lane 9-10 reservations cleared at time 1743256567.6301677
+2025-03-29 19:26:07 - INFO - Lane 9-8 reservations cleared at time 1743256567.6301677
+2025-03-29 19:26:07 - INFO - Lane 10-11 reservations cleared at time 1743256567.6301677
+2025-03-29 19:26:07 - INFO - Lane 11-12 reservations cleared at time 1743256567.6301677
+2025-03-29 19:26:07 - INFO - Lane 12-13 reservations cleared at time 1743256567.6301677
+2025-03-29 19:26:07 - INFO - Robot 1: Moved to 10, continuing to next vertex
+2025-03-29 19:26:07 - INFO - Robot 1: Attempting to move from 10 to 11 (lane 10-11) at time 1743256567.9866168
+2025-03-29 19:26:07 - INFO - Robot 1: Reserved lane 10-11 from 1743256567.9866168 to 1743256568.8665667
+2025-03-29 19:26:07 - INFO - Robot 1: Starting movement to 11
+2025-03-29 19:26:08 - INFO - Lane 13-0 reservations cleared at time 1743256568.1700134
+2025-03-29 19:26:08 - INFO - Robot 1: Moved to 11, continuing to next vertex
+2025-03-29 19:26:08 - INFO - Robot 1: Attempting to move from 11 to 12 (lane 11-12) at time 1743256568.4186375
+2025-03-29 19:26:08 - INFO - Robot 1: Reserved lane 11-12 from 1743256568.4186375 to 1743256569.3325584
+2025-03-29 19:26:08 - INFO - Robot 1: Starting movement to 12
+2025-03-29 19:26:08 - INFO - Robot 1: Moved to 12, continuing to next vertex
+2025-03-29 19:26:08 - INFO - Robot 1: Attempting to move from 12 to 13 (lane 12-13) at time 1743256568.8459148
+2025-03-29 19:26:08 - INFO - Robot 1: Reserved lane 12-13 from 1743256568.8459148 to 1743256569.6405294
+2025-03-29 19:26:08 - INFO - Robot 1: Starting movement to 13
+2025-03-29 19:26:08 - INFO - Lane 10-11 reservations cleared at time 1743256568.8819847
+2025-03-29 19:26:08 - INFO - Lane 0-1 reservations cleared at time 1743256568.9529316
+2025-03-29 19:26:09 - INFO - Robot 1: Moved to 13, continuing to next vertex
+2025-03-29 19:26:09 - INFO - Robot 1: Attempting to move from 13 to 0 (lane 13-0) at time 1743256569.2406418
+2025-03-29 19:26:09 - INFO - Robot 1: Reserved lane 13-0 from 1743256569.2406418 to 1743256569.8756244
+2025-03-29 19:26:09 - INFO - Robot 1: Starting movement to 0
+2025-03-29 19:26:09 - INFO - Lane 11-12 reservations cleared at time 1743256569.3478994
+2025-03-29 19:26:09 - INFO - Robot 1: Moved to 0, continuing to next vertex
+2025-03-29 19:26:09 - INFO - Robot 1: Attempting to move from 0 to 1 (lane 0-1) at time 1743256569.5961685
+2025-03-29 19:26:09 - INFO - Robot 1: Reserved lane 0-1 from 1743256569.5961685 to 1743256570.373207
+2025-03-29 19:26:09 - INFO - Robot 1: Starting movement to 1
+2025-03-29 19:26:09 - INFO - Lane 12-13 reservations cleared at time 1743256569.6676245
+2025-03-29 19:26:09 - INFO - Lane 1-2 reservations cleared at time 1743256569.7389681
+2025-03-29 19:26:09 - INFO - Lane 1-8 reservations cleared at time 1743256569.8100705
+2025-03-29 19:26:09 - INFO - Lane 13-0 reservations cleared at time 1743256569.8811362
+2025-03-29 19:26:09 - INFO - Robot 1: Moved to 1, continuing to next vertex
+2025-03-29 19:26:09 - INFO - Robot 1: Attempting to move from 1 to 7 (lane 1-7) at time 1743256569.9523466
+2025-03-29 19:26:09 - INFO - Robot 1: Reserved lane 1-7 from 1743256569.9523466 to 1743256570.9623933
+2025-03-29 19:26:09 - INFO - Robot 1: Starting movement to 7
+2025-03-29 19:26:10 - INFO - Lane 0-1 reservations cleared at time 1743256570.382388
+2025-03-29 19:26:10 - INFO - Robot 1: Moved to 7, continuing to next vertex
+2025-03-29 19:26:10 - INFO - Robot 1: Attempting to move from 7 to 6 (lane 7-6) at time 1743256570.4534779
+2025-03-29 19:26:10 - INFO - Robot 1: Reserved lane 7-6 from 1743256570.4534779 to 1743256571.4360013
+2025-03-29 19:26:10 - INFO - Robot 1: Starting movement to 6
+2025-03-29 19:26:10 - INFO - Robot 1: Moved to 6, continuing to next vertex
+2025-03-29 19:26:10 - INFO - Robot 1: Successfully reached destination 6
+2025-03-29 19:26:10 - INFO - Robot 1: Docked at charger. Starting battery recharge.
+2025-03-29 19:26:10 - INFO - Robot 1: Charging battery. Current battery level: 100%
+2025-03-29 19:26:16 - INFO - Robot 1: Initiating move to 7 from 6
+2025-03-29 19:26:16 - INFO - Robot 1: Finding path from 6 to 7 at time 1743256570.9150538
+2025-03-29 19:26:16 - INFO - Robot 1: At vertex 6, neighbors: [('7', 1.3872403113686722), ('5', 1.0111626170132089)]
+2025-03-29 19:26:16 - INFO - Robot 1: Lane 6-7 blocked by opposite lane 7-6 (Robot 1)
+2025-03-29 19:26:16 - INFO - Robot 1: Cannot reserve lane 6-7 from 6 to 7 at time 1743256570.9150538
+2025-03-29 19:26:16 - INFO - Robot 1: Reserved lane 6-5 from 1743256570.9150538 to 1743256571.6312172
+2025-03-29 19:26:16 - INFO - Robot 1: At vertex 5, neighbors: [('4', 1.2392337290835977), ('6', 1.0111626170132089)]
+2025-03-29 19:26:16 - INFO - Robot 1: Reserved lane 5-4 from 1743256571.6312172 to 1743256572.5089138
+2025-03-29 19:26:16 - INFO - Robot 1: At vertex 4, neighbors: [('5', 1.2392337290835977), ('3', 0.895976931463801)]
+2025-03-29 19:26:16 - INFO - Robot 1: Reserved lane 4-3 from 1743256572.5089138 to 1743256573.143496
+2025-03-29 19:26:16 - INFO - Robot 1: At vertex 3, neighbors: [('4', 0.895976931463801), ('2', 1.1561467366009386)]
+2025-03-29 19:26:16 - INFO - Robot 1: Reserved lane 3-2 from 1743256573.143496 to 1743256573.9623456
+2025-03-29 19:26:16 - INFO - Robot 1: At vertex 2, neighbors: [('1', 1.0935075162476025), ('3', 1.1561467366009386)]
+2025-03-29 19:26:16 - INFO - Robot 1: Reserved lane 2-1 from 1743256573.9623456 to 1743256574.7368305
+2025-03-29 19:26:16 - INFO - Robot 1: At vertex 1, neighbors: [('2', 1.0935075162476025), ('7', 1.4261010743018891), ('0', 1.0971132079111068), ('8', 1.1887830568383788)]
+2025-03-29 19:26:16 - INFO - Robot 1: Reserved lane 1-7 from 1743256574.7368305 to 1743256575.7468772
+2025-03-29 19:26:16 - INFO - Robot 1: Reserved lane 1-0 from 1743256574.7368305 to 1743256575.513869
+2025-03-29 19:26:16 - INFO - Robot 1: Reserved lane 1-8 from 1743256574.7368305 to 1743256575.578795
+2025-03-29 19:26:16 - INFO - Robot 1: Path found: ['6', '5', '4', '3', '2', '1', '7']
+2025-03-29 19:26:16 - INFO - Robot 1: Path found to 7: ['6', '5', '4', '3', '2', '1', '7']
+2025-03-29 19:26:16 - INFO - Robot 1: Attempting to move from 6 to 5 (lane 6-5) at time 1743256570.9150538
+2025-03-29 19:26:16 - INFO - Robot 1: Reserved lane 6-5 from 1743256570.9150538 to 1743256571.6312172
+2025-03-29 19:26:16 - INFO - Robot 1: Starting movement to 5
+2025-03-29 19:26:16 - INFO - Lane 1-7 reservations cleared at time 1743256576.0091214
+2025-03-29 19:26:16 - INFO - Lane 7-6 reservations cleared at time 1743256576.0091214
+2025-03-29 19:26:16 - INFO - Lane 6-7 reservations cleared at time 1743256576.0091214
+2025-03-29 19:26:16 - INFO - Lane 6-5 reservations cleared at time 1743256576.0091214
+2025-03-29 19:26:16 - INFO - Lane 5-4 reservations cleared at time 1743256576.0091214
+2025-03-29 19:26:16 - INFO - Lane 4-3 reservations cleared at time 1743256576.0091214
+2025-03-29 19:26:16 - INFO - Lane 3-2 reservations cleared at time 1743256576.0091214
+2025-03-29 19:26:16 - INFO - Lane 2-1 reservations cleared at time 1743256576.0091214
+2025-03-29 19:26:16 - INFO - Lane 1-0 reservations cleared at time 1743256576.0091214
+2025-03-29 19:26:16 - INFO - Lane 1-8 reservations cleared at time 1743256576.0091214
+2025-03-29 19:26:16 - INFO - Robot 1: Moved to 5, continuing to next vertex
+2025-03-29 19:26:16 - INFO - Robot 1: Attempting to move from 5 to 4 (lane 5-4) at time 1743256576.3642015
+2025-03-29 19:26:16 - INFO - Robot 1: Reserved lane 5-4 from 1743256576.3642015 to 1743256577.241898
+2025-03-29 19:26:16 - INFO - Robot 1: Starting movement to 4
+2025-03-29 19:26:16 - INFO - Robot 1: Moved to 4, continuing to next vertex
+2025-03-29 19:26:16 - INFO - Robot 1: Attempting to move from 4 to 3 (lane 4-3) at time 1743256576.7934153
+2025-03-29 19:26:16 - INFO - Robot 1: Reserved lane 4-3 from 1743256576.7934153 to 1743256577.4279976
+2025-03-29 19:26:16 - INFO - Robot 1: Starting movement to 3
+2025-03-29 19:26:17 - INFO - Robot 1: Moved to 3, continuing to next vertex
+2025-03-29 19:26:17 - INFO - Robot 1: Attempting to move from 3 to 2 (lane 3-2) at time 1743256577.1493912
+2025-03-29 19:26:17 - INFO - Robot 1: Reserved lane 3-2 from 1743256577.1493912 to 1743256577.9682407
+2025-03-29 19:26:17 - INFO - Robot 1: Starting movement to 2
+2025-03-29 19:26:17 - INFO - Lane 5-4 reservations cleared at time 1743256577.2559667
+2025-03-29 19:26:17 - INFO - Lane 4-3 reservations cleared at time 1743256577.4333458
+2025-03-29 19:26:17 - INFO - Robot 1: Moved to 2, continuing to next vertex
+2025-03-29 19:26:17 - INFO - Robot 1: Attempting to move from 2 to 1 (lane 2-1) at time 1743256577.5397274
+2025-03-29 19:26:17 - INFO - Robot 1: Reserved lane 2-1 from 1743256577.5397274 to 1743256578.3142123
+2025-03-29 19:26:17 - INFO - Robot 1: Starting movement to 1
+2025-03-29 19:26:17 - INFO - Robot 1: Moved to 1, continuing to next vertex
+2025-03-29 19:26:17 - INFO - Robot 1: Attempting to move from 1 to 7 (lane 1-7) at time 1743256577.8949468
+2025-03-29 19:26:17 - INFO - Robot 1: Reserved lane 1-7 from 1743256577.8949468 to 1743256578.9049935
+2025-03-29 19:26:17 - INFO - Robot 1: Starting movement to 7
+2025-03-29 19:26:18 - INFO - Lane 3-2 reservations cleared at time 1743256578.002219
+2025-03-29 19:26:18 - INFO - Lane 2-1 reservations cleared at time 1743256578.321546
+2025-03-29 19:26:18 - INFO - Robot 1: Moved to 7, continuing to next vertex
+2025-03-29 19:26:18 - INFO - Robot 1: Successfully reached destination 7
+2025-03-29 19:26:20 - INFO - Robot 1: Initiating move to 10 from 7
+2025-03-29 19:26:20 - INFO - Robot 1: Finding path from 7 to 10 at time 1743256578.3927073
+2025-03-29 19:26:20 - INFO - Robot 1: At vertex 7, neighbors: [('1', 1.4261010743018891), ('6', 1.3872403113686722)]
+2025-03-29 19:26:20 - INFO - Robot 1: Lane 7-1 blocked by opposite lane 1-7 (Robot 1)
+2025-03-29 19:26:20 - INFO - Robot 1: Cannot reserve lane 7-1 from 7 to 1 at time 1743256578.3927073
+2025-03-29 19:26:20 - INFO - Robot 1: Reserved lane 7-6 from 1743256578.3927073 to 1743256579.3752308
+2025-03-29 19:26:20 - INFO - Robot 1: At vertex 6, neighbors: [('7', 1.3872403113686722), ('5', 1.0111626170132089)]
+2025-03-29 19:26:20 - INFO - Robot 1: Reserved lane 6-5 from 1743256579.3752308 to 1743256580.0913942
+2025-03-29 19:26:20 - INFO - Robot 1: At vertex 5, neighbors: [('4', 1.2392337290835977), ('6', 1.0111626170132089)]
+2025-03-29 19:26:20 - INFO - Robot 1: Reserved lane 5-4 from 1743256580.0913942 to 1743256580.9690907
+2025-03-29 19:26:20 - INFO - Robot 1: At vertex 4, neighbors: [('5', 1.2392337290835977), ('3', 0.895976931463801)]
+2025-03-29 19:26:20 - INFO - Robot 1: Reserved lane 4-3 from 1743256580.9690907 to 1743256581.603673
+2025-03-29 19:26:20 - INFO - Robot 1: At vertex 3, neighbors: [('4', 0.895976931463801), ('2', 1.1561467366009386)]
+2025-03-29 19:26:20 - INFO - Robot 1: Reserved lane 3-2 from 1743256581.603673 to 1743256582.4225225
+2025-03-29 19:26:20 - INFO - Robot 1: At vertex 2, neighbors: [('1', 1.0935075162476025), ('3', 1.1561467366009386)]
+2025-03-29 19:26:20 - INFO - Robot 1: Reserved lane 2-1 from 1743256582.4225225 to 1743256583.1970074
+2025-03-29 19:26:20 - INFO - Robot 1: At vertex 1, neighbors: [('2', 1.0935075162476025), ('7', 1.4261010743018891), ('0', 1.0971132079111068), ('8', 1.1887830568383788)]
+2025-03-29 19:26:20 - INFO - Robot 1: Reserved lane 1-0 from 1743256583.1970074 to 1743256583.974046
+2025-03-29 19:26:20 - INFO - Robot 1: Reserved lane 1-8 from 1743256583.1970074 to 1743256584.038972
+2025-03-29 19:26:20 - INFO - Robot 1: At vertex 8, neighbors: [('9', 1.1976919113837243), ('1', 1.1887830568383788)]
+2025-03-29 19:26:20 - INFO - Robot 1: Reserved lane 8-9 from 1743256584.038972 to 1743256584.8872461
+2025-03-29 19:26:20 - INFO - Robot 1: At vertex 9, neighbors: [('10', 1.0437756817980584), ('8', 1.1976919113837243)]
+2025-03-29 19:26:20 - INFO - Robot 1: Reserved lane 9-10 from 1743256584.8872461 to 1743256585.626508
+2025-03-29 19:26:20 - INFO - Robot 1: Path found: ['7', '6', '5', '4', '3', '2', '1', '8', '9', '10']
+2025-03-29 19:26:20 - INFO - Robot 1: Path found to 10: ['7', '6', '5', '4', '3', '2', '1', '8', '9', '10']
+2025-03-29 19:26:20 - INFO - Robot 1: Attempting to move from 7 to 6 (lane 7-6) at time 1743256578.3927073
+2025-03-29 19:26:20 - INFO - Robot 1: Reserved lane 7-6 from 1743256578.3927073 to 1743256579.3752308
+2025-03-29 19:26:20 - INFO - Robot 1: Starting movement to 6
+2025-03-29 19:26:20 - INFO - Lane 1-7 reservations cleared at time 1743256580.5845711
+2025-03-29 19:26:20 - INFO - Lane 7-1 reservations cleared at time 1743256580.5845711
+2025-03-29 19:26:20 - INFO - Lane 7-6 reservations cleared at time 1743256580.5845711
+2025-03-29 19:26:20 - INFO - Lane 6-5 reservations cleared at time 1743256580.5845711
+2025-03-29 19:26:20 - INFO - Lane 5-4 reservations cleared at time 1743256580.9747698
+2025-03-29 19:26:21 - INFO - Robot 1: Moved to 6, continuing to next vertex
+2025-03-29 19:26:21 - INFO - Robot 1: Attempting to move from 6 to 5 (lane 6-5) at time 1743256581.0462303
+2025-03-29 19:26:21 - INFO - Robot 1: Reserved lane 6-5 from 1743256581.0462303 to 1743256581.7623937
+2025-03-29 19:26:21 - INFO - Robot 1: Starting movement to 5
+2025-03-29 19:26:21 - INFO - Robot 1: Moved to 5, continuing to next vertex
+2025-03-29 19:26:21 - INFO - Robot 1: Attempting to move from 5 to 4 (lane 5-4) at time 1743256581.4016156
+2025-03-29 19:26:21 - INFO - Robot 1: Reserved lane 5-4 from 1743256581.4016156 to 1743256582.2793121
+2025-03-29 19:26:21 - INFO - Robot 1: Starting movement to 4
+2025-03-29 19:26:21 - INFO - Lane 4-3 reservations cleared at time 1743256581.6152077
+2025-03-29 19:26:21 - INFO - Lane 6-5 reservations cleared at time 1743256581.7928653
+2025-03-29 19:26:21 - INFO - Robot 1: Moved to 4, continuing to next vertex
+2025-03-29 19:26:21 - INFO - Robot 1: Attempting to move from 4 to 3 (lane 4-3) at time 1743256581.828867
+2025-03-29 19:26:21 - INFO - Robot 1: Reserved lane 4-3 from 1743256581.828867 to 1743256582.4634492
+2025-03-29 19:26:21 - INFO - Robot 1: Starting movement to 3
+2025-03-29 19:26:22 - INFO - Robot 1: Moved to 3, continuing to next vertex
+2025-03-29 19:26:22 - INFO - Robot 1: Attempting to move from 3 to 2 (lane 3-2) at time 1743256582.1842046
+2025-03-29 19:26:22 - INFO - Robot 1: Reserved lane 3-2 from 1743256582.1842046 to 1743256583.0030541
+2025-03-29 19:26:22 - INFO - Robot 1: Starting movement to 2
+2025-03-29 19:26:22 - INFO - Lane 5-4 reservations cleared at time 1743256582.2916698
+2025-03-29 19:26:22 - INFO - Lane 4-3 reservations cleared at time 1743256582.4696457
+2025-03-29 19:26:22 - INFO - Robot 1: Moved to 2, continuing to next vertex
+2025-03-29 19:26:22 - INFO - Robot 1: Attempting to move from 2 to 1 (lane 2-1) at time 1743256582.5762372
+2025-03-29 19:26:22 - INFO - Robot 1: Reserved lane 2-1 from 1743256582.5762372 to 1743256583.350722
+2025-03-29 19:26:22 - INFO - Robot 1: Starting movement to 1
+2025-03-29 19:26:22 - INFO - Robot 1: Moved to 1, continuing to next vertex
+2025-03-29 19:26:22 - INFO - Robot 1: Attempting to move from 1 to 8 (lane 1-8) at time 1743256582.9318252
+2025-03-29 19:26:22 - INFO - Robot 1: Reserved lane 1-8 from 1743256582.9318252 to 1743256583.7737896
+2025-03-29 19:26:22 - INFO - Robot 1: Starting movement to 8
+2025-03-29 19:26:23 - INFO - Lane 3-2 reservations cleared at time 1743256583.0033224
+2025-03-29 19:26:23 - INFO - Robot 1: Moved to 8, continuing to next vertex
+2025-03-29 19:26:23 - INFO - Robot 1: Attempting to move from 8 to 9 (lane 8-9) at time 1743256583.3227997
+2025-03-29 19:26:23 - INFO - Robot 1: Reserved lane 8-9 from 1743256583.3227997 to 1743256584.171074
+2025-03-29 19:26:23 - INFO - Robot 1: Starting movement to 9
+2025-03-29 19:26:23 - INFO - Lane 2-1 reservations cleared at time 1743256583.3589027
+2025-03-29 19:26:23 - INFO - Robot 1: Moved to 9, continuing to next vertex
+2025-03-29 19:26:23 - INFO - Robot 1: Attempting to move from 9 to 10 (lane 9-10) at time 1743256583.7138343
+2025-03-29 19:26:23 - INFO - Robot 1: Reserved lane 9-10 from 1743256583.7138343 to 1743256584.4530962
+2025-03-29 19:26:23 - INFO - Robot 1: Starting movement to 10
+2025-03-29 19:26:23 - INFO - Lane 1-0 reservations cleared at time 1743256583.998846
+2025-03-29 19:26:24 - INFO - Lane 1-8 reservations cleared at time 1743256584.0700023
+2025-03-29 19:26:24 - INFO - Robot 1: Moved to 10, continuing to next vertex
+2025-03-29 19:26:24 - INFO - Robot 1: Successfully reached destination 10
+2025-03-29 19:26:36 - INFO - Robot 2: Initiating move to 9 from 6
+2025-03-29 19:26:36 - INFO - Robot 2: Finding path from 6 to 9 at time 1743256584.0700023
+2025-03-29 19:26:36 - INFO - Robot 2: At vertex 6, neighbors: [('7', 1.3872403113686722), ('5', 1.0111626170132089)]
+2025-03-29 19:26:36 - INFO - Robot 2: Reserved lane 6-7 from 1743256584.0700023 to 1743256585.157719
+2025-03-29 19:26:36 - INFO - Robot 2: Reserved lane 6-5 from 1743256584.0700023 to 1743256584.8628414
+2025-03-29 19:26:36 - INFO - Robot 2: At vertex 7, neighbors: [('1', 1.4261010743018891), ('6', 1.3872403113686722)]
+2025-03-29 19:26:36 - INFO - Robot 2: Reserved lane 7-1 from 1743256585.157719 to 1743256586.2759056
+2025-03-29 19:26:36 - INFO - Robot 2: At vertex 1, neighbors: [('2', 1.0935075162476025), ('7', 1.4261010743018891), ('0', 1.0971132079111068), ('8', 1.1887830568383788)]
+2025-03-29 19:26:36 - INFO - Robot 2: Reserved lane 1-2 from 1743256586.2759056 to 1743256587.13331
+2025-03-29 19:26:36 - INFO - Robot 2: Reserved lane 1-0 from 1743256586.2759056 to 1743256587.1361372
+2025-03-29 19:26:36 - INFO - Robot 2: Reserved lane 1-8 from 1743256586.2759056 to 1743256587.2080145
+2025-03-29 19:26:36 - INFO - Robot 2: At vertex 8, neighbors: [('9', 1.1976919113837243), ('1', 1.1887830568383788)]
+2025-03-29 19:26:36 - INFO - Robot 2: Reserved lane 8-9 from 1743256587.2080145 to 1743256588.1471086
+2025-03-29 19:26:36 - INFO - Robot 2: Path found: ['6', '7', '1', '8', '9']
+2025-03-29 19:26:36 - INFO - Robot 2: Path found to 9: ['6', '7', '1', '8', '9']
+2025-03-29 19:26:36 - INFO - Robot 2: Attempting to move from 6 to 7 (lane 6-7) at time 1743256584.0700023
+2025-03-29 19:26:36 - INFO - Robot 2: Reserved lane 6-7 from 1743256584.0700023 to 1743256585.157719
+2025-03-29 19:26:36 - INFO - Robot 2: Starting movement to 7
+2025-03-29 19:26:36 - INFO - Lane 8-9 reservations cleared at time 1743256596.8189695
+2025-03-29 19:26:36 - INFO - Lane 9-10 reservations cleared at time 1743256596.8189695
+2025-03-29 19:26:36 - INFO - Lane 6-7 reservations cleared at time 1743256596.8189695
+2025-03-29 19:26:36 - INFO - Lane 6-5 reservations cleared at time 1743256596.8189695
+2025-03-29 19:26:36 - INFO - Lane 7-1 reservations cleared at time 1743256596.8189695
+2025-03-29 19:26:36 - INFO - Lane 1-2 reservations cleared at time 1743256596.8189695
+2025-03-29 19:26:36 - INFO - Lane 1-0 reservations cleared at time 1743256596.8189695
+2025-03-29 19:26:36 - INFO - Lane 1-8 reservations cleared at time 1743256596.8189695
+2025-03-29 19:26:37 - INFO - Robot 2: Moved to 7, continuing to next vertex
+2025-03-29 19:26:37 - INFO - Robot 2: Attempting to move from 7 to 1 (lane 7-1) at time 1743256597.334247
+2025-03-29 19:26:37 - INFO - Robot 2: Reserved lane 7-1 from 1743256597.334247 to 1743256598.4524338
+2025-03-29 19:26:37 - INFO - Robot 2: Starting movement to 1
+2025-03-29 19:26:37 - INFO - Robot 2: Moved to 1, continuing to next vertex
+2025-03-29 19:26:37 - INFO - Robot 2: Attempting to move from 1 to 8 (lane 1-8) at time 1743256597.8901176
+2025-03-29 19:26:37 - INFO - Robot 2: Reserved lane 1-8 from 1743256597.8901176 to 1743256598.8222265
+2025-03-29 19:26:37 - INFO - Robot 2: Starting movement to 8
+2025-03-29 19:26:38 - INFO - Robot 2: Moved to 8, continuing to next vertex
+2025-03-29 19:26:38 - INFO - Robot 2: Attempting to move from 8 to 9 (lane 8-9) at time 1743256598.332639
+2025-03-29 19:26:38 - INFO - Robot 2: Reserved lane 8-9 from 1743256598.332639 to 1743256599.271733
+2025-03-29 19:26:38 - INFO - Robot 2: Starting movement to 9
+2025-03-29 19:26:38 - INFO - Lane 7-1 reservations cleared at time 1743256598.4915445
+2025-03-29 19:26:38 - INFO - Robot 2: Moved to 9, continuing to next vertex
+2025-03-29 19:26:38 - INFO - Robot 2: Successfully reached destination 9
+2025-03-29 19:26:41 - INFO - Robot 2: Initiating move to 10 from 9
+2025-03-29 19:26:41 - INFO - Robot 2: Finding path from 9 to 10 at time 1743256598.768674
+2025-03-29 19:26:41 - INFO - Robot 2: At vertex 9, neighbors: [('10', 1.0437756817980584), ('8', 1.1976919113837243)]
+2025-03-29 19:26:41 - INFO - Robot 2: Reserved lane 9-10 from 1743256598.768674 to 1743256599.5870843
+2025-03-29 19:26:41 - INFO - Robot 2: Lane 9-8 blocked by opposite lane 8-9 (Robot 2)
+2025-03-29 19:26:41 - INFO - Robot 2: Cannot reserve lane 9-8 from 9 to 8 at time 1743256598.768674
+2025-03-29 19:26:41 - INFO - Robot 2: Path found: ['9', '10']
+2025-03-29 19:26:41 - INFO - Robot 2: Path found to 10: ['9', '10']
+2025-03-29 19:26:41 - INFO - Robot 2: Attempting to move from 9 to 10 (lane 9-10) at time 1743256598.768674
+2025-03-29 19:26:41 - INFO - Robot 2: Reserved lane 9-10 from 1743256598.768674 to 1743256599.5870843
+2025-03-29 19:26:41 - INFO - Robot 2: Starting movement to 10
+2025-03-29 19:26:41 - INFO - Lane 1-8 reservations cleared at time 1743256601.5771663
+2025-03-29 19:26:41 - INFO - Lane 8-9 reservations cleared at time 1743256601.5771663
+2025-03-29 19:26:41 - INFO - Lane 9-10 reservations cleared at time 1743256601.5771663
+2025-03-29 19:26:41 - INFO - Lane 9-8 reservations cleared at time 1743256601.5771663
+2025-03-29 19:26:41 - INFO - Robot 2: Moved to 10, continuing to next vertex
+2025-03-29 19:26:41 - INFO - Robot 2: Successfully reached destination 10
+2025-03-29 19:26:44 - INFO - Robot 2: Initiating move to 1 from 10
+2025-03-29 19:26:44 - INFO - Robot 2: Finding path from 10 to 1 at time 1743256601.9724526
+2025-03-29 19:26:44 - INFO - Robot 2: At vertex 10, neighbors: [('9', 1.0437756817980584), ('11', 1.2424150968110463)]
+2025-03-29 19:26:44 - INFO - Robot 2: Reserved lane 10-9 from 1743256601.9724526 to 1743256602.790863
+2025-03-29 19:26:44 - INFO - Robot 2: Reserved lane 10-11 from 1743256601.9724526 to 1743256602.9466136
+2025-03-29 19:26:44 - INFO - Robot 2: At vertex 9, neighbors: [('10', 1.0437756817980584), ('8', 1.1976919113837243)]
+2025-03-29 19:26:44 - INFO - Robot 2: Reserved lane 9-8 from 1743256602.790863 to 1743256603.729957
+2025-03-29 19:26:44 - INFO - Robot 2: At vertex 8, neighbors: [('9', 1.1976919113837243), ('1', 1.1887830568383788)]
+2025-03-29 19:26:44 - INFO - Robot 2: Reserved lane 8-1 from 1743256603.729957 to 1743256604.662066
+2025-03-29 19:26:44 - INFO - Robot 2: Path found: ['10', '9', '8', '1']
+2025-03-29 19:26:44 - INFO - Robot 2: Path found to 1: ['10', '9', '8', '1']
+2025-03-29 19:26:44 - INFO - Robot 2: Attempting to move from 10 to 9 (lane 10-9) at time 1743256601.9724526
+2025-03-29 19:26:44 - INFO - Robot 2: Reserved lane 10-9 from 1743256601.9724526 to 1743256602.790863
+2025-03-29 19:26:44 - INFO - Robot 2: Starting movement to 9
+2025-03-29 19:26:44 - INFO - Lane 10-9 reservations cleared at time 1743256604.7696784
+2025-03-29 19:26:44 - INFO - Lane 10-11 reservations cleared at time 1743256604.7696784
+2025-03-29 19:26:44 - INFO - Lane 9-8 reservations cleared at time 1743256604.7696784
+2025-03-29 19:26:44 - INFO - Lane 8-1 reservations cleared at time 1743256604.7696784
+2025-03-29 19:26:45 - INFO - Robot 2: Moved to 9, continuing to next vertex
+2025-03-29 19:26:45 - INFO - Robot 2: Attempting to move from 9 to 8 (lane 9-8) at time 1743256605.1659684
+2025-03-29 19:26:45 - INFO - Robot 2: Reserved lane 9-8 from 1743256605.1659684 to 1743256606.1050625
+2025-03-29 19:26:45 - INFO - Robot 2: Starting movement to 8
+2025-03-29 19:26:45 - INFO - Robot 2: Moved to 8, continuing to next vertex
+2025-03-29 19:26:45 - INFO - Robot 2: Attempting to move from 8 to 1 (lane 8-1) at time 1743256605.6023164
+2025-03-29 19:26:45 - INFO - Robot 2: Reserved lane 8-1 from 1743256605.6023164 to 1743256606.5344253
+2025-03-29 19:26:45 - INFO - Robot 2: Starting movement to 1
+2025-03-29 19:26:46 - INFO - Robot 2: Moved to 1, continuing to next vertex
+2025-03-29 19:26:46 - INFO - Robot 2: Successfully reached destination 1
+2025-03-29 19:26:48 - INFO - Robot 1: Initiating move to 1 from 10
+2025-03-29 19:26:48 - INFO - Robot 1: Finding path from 10 to 1 at time 1743256606.0377657
+2025-03-29 19:26:48 - INFO - Robot 1: At vertex 10, neighbors: [('9', 1.0437756817980584), ('11', 1.2424150968110463)]
+2025-03-29 19:26:48 - INFO - Robot 1: Reserved lane 10-9 from 1743256606.0377657 to 1743256606.7770276
+2025-03-29 19:26:48 - INFO - Robot 1: Reserved lane 10-11 from 1743256606.0377657 to 1743256606.9177155
+2025-03-29 19:26:48 - INFO - Robot 1: At vertex 9, neighbors: [('10', 1.0437756817980584), ('8', 1.1976919113837243)]
+2025-03-29 19:26:48 - INFO - Robot 1: Reserved lane 9-8 from 1743256606.7770276 to 1743256607.6253018
+2025-03-29 19:26:48 - INFO - Robot 1: At vertex 8, neighbors: [('9', 1.1976919113837243), ('1', 1.1887830568383788)]
+2025-03-29 19:26:48 - INFO - Robot 1: Reserved lane 8-1 from 1743256607.6253018 to 1743256608.4672663
+2025-03-29 19:26:48 - INFO - Robot 1: Path found: ['10', '9', '8', '1']
+2025-03-29 19:26:48 - INFO - Robot 1: Path found to 1: ['10', '9', '8', '1']
+2025-03-29 19:26:48 - INFO - Robot 1: Attempting to move from 10 to 9 (lane 10-9) at time 1743256606.0377657
+2025-03-29 19:26:48 - INFO - Robot 1: Reserved lane 10-9 from 1743256606.0377657 to 1743256606.7770276
+2025-03-29 19:26:48 - INFO - Robot 1: Starting movement to 9
+2025-03-29 19:26:48 - INFO - Lane 9-8 reservations cleared at time 1743256608.559867
+2025-03-29 19:26:48 - INFO - Lane 8-1 reservations cleared at time 1743256608.559867
+2025-03-29 19:26:48 - INFO - Lane 10-9 reservations cleared at time 1743256608.559867
+2025-03-29 19:26:48 - INFO - Lane 10-11 reservations cleared at time 1743256608.559867
+2025-03-29 19:26:48 - INFO - Robot 1: Moved to 9, continuing to next vertex
+2025-03-29 19:26:48 - INFO - Robot 1: Attempting to move from 9 to 8 (lane 9-8) at time 1743256608.9168093
+2025-03-29 19:26:48 - INFO - Robot 1: Reserved lane 9-8 from 1743256608.9168093 to 1743256609.7650836
+2025-03-29 19:26:48 - INFO - Robot 1: Starting movement to 8
+2025-03-29 19:26:49 - INFO - Robot 1: Moved to 8, continuing to next vertex
+2025-03-29 19:26:49 - INFO - Robot 1: Attempting to move from 8 to 1 (lane 8-1) at time 1743256609.3100898
+2025-03-29 19:26:49 - INFO - Robot 1: Reserved lane 8-1 from 1743256609.3100898 to 1743256610.1520543
+2025-03-29 19:26:49 - INFO - Robot 1: Starting movement to 1
+2025-03-29 19:26:49 - INFO - Robot 1: Moved to 1, continuing to next vertex
+2025-03-29 19:26:49 - INFO - Robot 1: Successfully reached destination 1

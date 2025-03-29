@@ -7,6 +7,14 @@ from utils.robot import Robot
 import tkinter as tk
 from tkinter import simpledialog, messagebox
 import random
+import logging
+
+logging.basicConfig(
+    filename='src/logs/fleet_logs.txt',
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
 
 class FleetManagementApp:
     def __init__(self, root: tk.Tk, json_path: str, max_robots: int = 5, spawn_prefix: str = "m"):
@@ -165,6 +173,7 @@ class FleetManagementApp:
             if robot.waiting_indicator:
                 self.canvas.delete(robot.waiting_indicator)
             del self.robots[robot_id]
+            logging.info(f"Robot {robot_id}: Removed from the system")
 
             self.update_status_display()
             self.robot_count_label.config(text=f"Robots: {len(self.robots)}/{self.max_robots}")

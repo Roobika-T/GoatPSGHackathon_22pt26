@@ -1,5 +1,13 @@
 from gui.fleetmanagement import FleetManagementApp
 import tkinter as tk
+import logging 
+
+logging.basicConfig(
+    filename='src/logs/fleet_logs.txt',
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
 
 def main(json_path: str, spawn_prefix: str = "m"):
     root = tk.Tk()

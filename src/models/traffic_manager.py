@@ -1,3 +1,12 @@
+import logging 
+
+logging.basicConfig(
+    filename='src/logs/fleet_logs.txt',
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
+
 class TrafficManager:
     def __init__(self):
         self.lane_reservations = {}
@@ -13,17 +22,17 @@ class TrafficManager:
         if opposite_lane_id in self.lane_reservations:
             for res_robot_id, res_start, res_end in self.lane_reservations[opposite_lane_id]:
                 if max(start_time, res_start) < min(end_time, res_end):
-                    print(f"Robot {robot_id}: Lane {lane_id} blocked by opposite lane {opposite_lane_id} (Robot {res_robot_id})")
+                    logging.info(f"Robot {robot_id}: Lane {lane_id} blocked by opposite lane {opposite_lane_id} (Robot {res_robot_id})")
                     return False
 
         for res_robot_id, res_start, res_end in self.lane_reservations[lane_id]:
             if res_robot_id == robot_id:
                 continue
             if max(start_time, res_start) < min(end_time, res_end):
-                print(f"Robot {robot_id}: Lane {lane_id} already reserved by Robot {res_robot_id} from {res_start} to {res_end}")
+                logging.info(f"Robot {robot_id}: Lane {lane_id} already reserved by Robot {res_robot_id} from {res_start} to {res_end}")
                 return False
 
-        print(f"Robot {robot_id}: Reserved lane {lane_id} from {start_time} to {end_time}")
+        logging.info(f"Robot {robot_id}: Reserved lane {lane_id} from {start_time} to {end_time}")
         self.lane_reservations[lane_id].append((robot_id, start_time, end_time))
         self.lane_directions[lane_id] = robot_id
         return True
@@ -58,7 +67,7 @@ class TrafficManager:
                 if res[2] > self.current_time
             ]
             if not self.lane_reservations[lane_id]:
-                print(f"Lane {lane_id} reservations cleared at time {self.current_time}")
+                logging.info(f"Lane {lane_id} reservations cleared at time {self.current_time}")
                 del self.lane_reservations[lane_id]
                 if lane_id in self.lane_directions:
                     del self.lane_directions[lane_id]

@@ -5,6 +5,14 @@ from utils.robot_pathfinder import RobotPathFinder
 import tkinter as tk
 import time
 from math import sqrt
+import logging
+
+logging.basicConfig(
+    filename='src/logs/fleet_logs.txt',
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
 
 class Robot:
     def __init__(self, robot_spec: RobotSpec, canvas: tk.Canvas,
@@ -24,16 +32,17 @@ class Robot:
         self.pos_x = nav_graph.vertices[robot_spec.start_vertex]['x'] * 50 + 200
         self.pos_y = -nav_graph.vertices[robot_spec.start_vertex]['y'] * 50 + 200
         self.obj = canvas.create_oval(self.pos_x-8, self.pos_y-8, self.pos_x+8, self.pos_y+8,
-                                    fill=self.color, outline="black", width=2)
+                                      fill=self.color, outline="black", width=2)
         self.label = canvas.create_text(self.pos_x, self.pos_y-20, text=f"R{self.id}", font=("Arial", 10, "bold"))
         self.path_line = None
 
         self.battery_drain_rate = 0.1 
         self.battery_label = canvas.create_text(self.pos_x, self.pos_y+20,
-                                            text=f"{self.battery:.0f}%", fill="green", font=("Arial", 8))
+                                                text=f"{self.battery:.0f}%", fill="green", font=("Arial", 8))
         self.waiting_indicator = None
 
     def move_to(self, goal: str):
+        logging.info(f"Robot {self.id}: Initiating move to {goal} from {self.current_vertex}")
         path_finder = RobotPathFinder(self.nav_graph, self.traffic_manager)
         current_time = self.traffic_manager.current_time
         self.path, _, self.arrival_times = path_finder.find_shortest_path(
@@ -42,7 +51,7 @@ class Robot:
         if self.path:
             self.status = "moving"
             self._update_label()
-
+            logging.info(f"Robot {self.id}: Path found to {goal}: {self.path}")
             if self.path_line:
                 self.canvas.delete(self.path_line)
 
@@ -57,7 +66,7 @@ class Robot:
 
             self._animate_movement(1)
         else:
-            print(f"Robot {self.id}: No path found to {goal}, retrying in 1 second...")
+            logging.warning(f"Robot {self.id}: No path found to {goal}, retrying in 1 second...")
             self.status = "waiting"
             self._update_label()
             self._start_waiting_indicator()
@@ -65,6 +74,7 @@ class Robot:
 
     def _animate_movement(self, path_idx: int):
         if path_idx >= len(self.path):
+            logging.info(f"Robot {self.id}: Successfully reached destination {self.current_vertex}")
             self.status = "idle"
             self._update_label()
             self._stop_waiting_indicator()
@@ -73,8 +83,8 @@ class Robot:
             if current_vertex_data['meta'].get('is_charger', False):
                 self.status = "charging"
                 self._update_label()
+                logging.info(f"Robot {self.id}: Docked at charger. Starting battery recharge.")
                 self._charge_battery()
-            print(f"Robot {self.id}: Reached destination {self.current_vertex}, status: {self.status}")
             return
 
         next_vertex = self.path[path_idx]
@@ -91,29 +101,27 @@ class Robot:
         travel_time = lane_distance / self.speed
 
         current_time = self.traffic_manager.current_time
-        print(f"Robot {self.id}: Attempting to move from {self.current_vertex} to {next_vertex} (lane {lane_id})")
+        logging.info(f"Robot {self.id}: Attempting to move from {self.current_vertex} to {next_vertex} (lane {lane_id}) at time {current_time}")
         if not self.traffic_manager.reserve_lane(lane_id, self.id, current_time, current_time + travel_time):
             self.status = "waiting"
             self._update_label()
             self._start_waiting_indicator()
             self.traffic_manager.add_to_waiting_queue(self.current_vertex, self.id, current_time)
-            print(f"Robot {self.id}: Waiting at {self.current_vertex} for lane {lane_id}")
-
+            logging.warning(f"Robot {self.id}: Waiting at {self.current_vertex} for lane {lane_id}")
             def check_lane_availability():
                 self.traffic_manager.update_time(time.time())
                 current_time = self.traffic_manager.current_time
-                print(f"Robot {self.id}: Checking lane {lane_id} availability at time {current_time}")
+                logging.info(f"Robot {self.id}: Checking lane {lane_id} availability at time {current_time}")
                 if self.traffic_manager.reserve_lane(lane_id, self.id, current_time, current_time + travel_time):
                     self.traffic_manager.remove_from_waiting_queue(self.current_vertex, self.id)
                     self.status = "moving"
                     self._update_label()
                     self._stop_waiting_indicator()
-                    print(f"Robot {self.id}: Lane {lane_id} now available, resuming movement")
+                    logging.info(f"Robot {self.id}: Lane {lane_id} now available, resuming movement")
                     self._animate_movement(path_idx)
                 else:
-                    print(f"Robot {self.id}: Lane {lane_id} still unavailable, waiting...")
+                    logging.warning(f"Robot {self.id}: Lane {lane_id} still unavailable, waiting...")
                     self.canvas.after(500, check_lane_availability)
-
             self.canvas.after(500, check_lane_availability)
             return
 
@@ -126,16 +134,15 @@ class Robot:
             if closest_charger and closest_charger != self.current_vertex:
                 self.status = "seeking_charger"
                 self._update_label()
-                print(f"Robot {self.id}: Low battery ({self.battery:.0f}%), seeking charger at {closest_charger}")
+                logging.info(f"Robot {self.id}: Low battery ({self.battery:.0f}%), seeking charger at {closest_charger}")
                 self.move_to(closest_charger)
                 return
 
         def step(count=0):
             self.traffic_manager.update_time(time.time())
-
             if count >= steps:
                 self.current_vertex = next_vertex
-                print(f"Robot {self.id}: Moved to {self.current_vertex}, continuing to next vertex")
+                logging.info(f"Robot {self.id}: Moved to {self.current_vertex}, continuing to next vertex")
                 self._animate_movement(path_idx + 1)
                 return
 
@@ -144,11 +151,10 @@ class Robot:
             self.canvas.coords(self.obj, self.pos_x-8, self.pos_y-8, self.pos_x+8, self.pos_y+8)
             self.canvas.coords(self.label, self.pos_x, self.pos_y-20)
             self.canvas.coords(self.battery_label, self.pos_x, self.pos_y+20)
-
             delay = 50 / self.speed
             self.canvas.after(int(delay), step, count + 1)
 
-        print(f"Robot {self.id}: Starting movement to {next_vertex}")
+        logging.info(f"Robot {self.id}: Starting movement to {next_vertex}")
         step()
 
     def _start_waiting_indicator(self):
@@ -186,7 +192,6 @@ class Robot:
             if vertex['meta'].get('is_charger', False):
                 distance = self.nav_graph.calculate_distance(self.current_vertex, vid)
                 chargers.append((vid, distance))
-
         if chargers:
             chargers.sort(key=lambda x: x[1])
             return chargers[0][0]
@@ -196,7 +201,7 @@ class Robot:
         if self.battery < 100:
             self.battery = min(100, self.battery + 2.0)
             self._update_battery_display()
-
+            logging.info(f"Robot {self.id}: Charging battery. Current battery level: {self.battery:.0f}%")
             if self.battery < 100:
                 self.canvas.after(100, self._charge_battery)
             else:
@@ -210,5 +215,4 @@ class Robot:
             color = "orange"
         else:
             color = "red"
-
         self.canvas.itemconfig(self.battery_label, text=f"{self.battery:.0f}%", fill=color)

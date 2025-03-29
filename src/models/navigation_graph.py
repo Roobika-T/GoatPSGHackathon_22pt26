@@ -1,6 +1,15 @@
 import json
 from math import sqrt
 from typing import List
+import logging 
+
+logging.basicConfig(
+    filename='src/logs/fleet_logs.txt',
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
+
 
 class NavigationGraph:
     def __init__(self, json_path: str, spawn_prefix: str = "m"):
