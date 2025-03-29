@@ -1,0 +1,13 @@
+[2025-03-29 10:51:16] Spawned Robot R1 at vertex 10
+[2025-03-29 10:51:18] Spawned Robot R2 at vertex 4
+[2025-03-29 10:52:06] Spawned Robot R3 at vertex 0
+[2025-03-29 10:52:08] Spawned Robot R4 at vertex 1
+[2025-03-29 10:52:12] Spawned Robot R5 at vertex 5
+[2025-03-29 10:52:13] Spawned Robot R6 at vertex 11
+[2025-03-29 10:52:15] Spawned Robot R7 at vertex 6
+[2025-03-29 10:52:20] Selected Robot R5 at 5
+[2025-03-29 10:52:20] Robot R5 assigned path: 5
+[2025-03-29 10:52:20] Robot R5 reached destination: 5 (task complete)
+[2025-03-29 10:52:24] Selected Robot R2 at 4
+[2025-03-29 10:52:26] Selected Robot R3 at 0
+[2025-03-29 10:52:27] Selected Robot R1 at 10
