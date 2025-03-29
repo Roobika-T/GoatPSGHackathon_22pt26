@@ -102,7 +102,7 @@ def display_robots_and_destinations(nav_graph: NavigationGraph):
     return robots
 
 def main():
-    nav_graph = NavigationGraph('/Users/roobikatura/GoatPSGHackathon_22pt26/nav_graph_samples/nav_graph_1.json')
+    nav_graph = NavigationGraph('./data/nav_graph_samples/nav_graph_1.json')
     path_finder = RobotPathFinder(nav_graph)
     
     robots = display_robots_and_destinations(nav_graph)
