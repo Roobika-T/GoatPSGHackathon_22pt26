@@ -1,13 +1,23 @@
 import json
 import tkinter as tk
-from tkinter import simpledialog, messagebox
+from tkinter import simpledialog, messagebox, scrolledtext  # Added scrolledtext for GUI logs
 from typing import Dict, List, Tuple, Set
 from heapq import heappush, heappop
 from math import sqrt
 import random
 import time
+from datetime import datetime  # Added for timestamps in logs
 from dataclasses import dataclass
 import os
+import logging  # Added for file logging
+
+# Set up logging to file
+logging.basicConfig(
+    filename='fleet_logs.txt',
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
 
 @dataclass
 class RobotSpec:
@@ -118,17 +128,17 @@ class TrafficManager:
         if opposite_lane_id in self.lane_reservations:
             for res_robot_id, res_start, res_end in self.lane_reservations[opposite_lane_id]:
                 if max(start_time, res_start) < min(end_time, res_end):
-                    print(f"Robot {robot_id}: Lane {lane_id} blocked by opposite lane {opposite_lane_id} (Robot {res_robot_id})")
+                    logging.info(f"Robot {robot_id}: Lane {lane_id} blocked by opposite lane {opposite_lane_id} (Robot {res_robot_id})")
                     return False
 
         for res_robot_id, res_start, res_end in self.lane_reservations[lane_id]:
             if res_robot_id == robot_id:
                 continue
             if max(start_time, res_start) < min(end_time, res_end):
-                print(f"Robot {robot_id}: Lane {lane_id} already reserved by Robot {res_robot_id} from {res_start} to {res_end}")
+                logging.info(f"Robot {robot_id}: Lane {lane_id} already reserved by Robot {res_robot_id} from {res_start} to {res_end}")
                 return False
 
-        print(f"Robot {robot_id}: Reserved lane {lane_id} from {start_time} to {end_time}")
+        logging.info(f"Robot {robot_id}: Reserved lane {lane_id} from {start_time} to {end_time}")
         self.lane_reservations[lane_id].append((robot_id, start_time, end_time))
         self.lane_directions[lane_id] = robot_id
         return True
@@ -137,6 +147,7 @@ class TrafficManager:
         if vertex_id not in self.waiting_queues:
             self.waiting_queues[vertex_id] = []
         self.waiting_queues[vertex_id].append((robot_id, arrival_time))
+        logging.info(f"Robot {robot_id}: Added to waiting queue at vertex {vertex_id}")
 
     def process_waiting_queue(self, vertex_id: str) -> str:
         if vertex_id not in self.waiting_queues or not self.waiting_queues[vertex_id]:
@@ -151,6 +162,7 @@ class TrafficManager:
             ]
             if not self.waiting_queues[vertex_id]:
                 del self.waiting_queues[vertex_id]
+            logging.info(f"Robot {robot_id}: Removed from waiting queue at vertex {vertex_id}")
 
     def get_lane_id(self, from_vertex: str, to_vertex: str) -> str:
         return f"{from_vertex}-{to_vertex}"
@@ -163,7 +175,7 @@ class TrafficManager:
                 if res[2] > self.current_time
             ]
             if not self.lane_reservations[lane_id]:
-                print(f"Lane {lane_id} reservations cleared at time {self.current_time}")
+                logging.info(f"Lane {lane_id} reservations cleared at time {self.current_time}")
                 del self.lane_reservations[lane_id]
                 if lane_id in self.lane_directions:
                     del self.lane_directions[lane_id]
@@ -176,10 +188,10 @@ class RobotPathFinder:
     def find_shortest_path(self, start: str, goal: str, robot_id: str,
                            start_time: float = 0, speed: float = 1.0) -> Tuple[List[str], float, List[float]]:
         if start not in self.nav_graph.vertices or goal not in self.nav_graph.vertices:
-            print(f"Robot {robot_id}: Start {start} or goal {goal} not in vertices.")
+            logging.info(f"Robot {robot_id}: Start {start} or goal {goal} not in vertices.")
             return [], 0.0, []
 
-        print(f"Robot {robot_id}: Finding path from {start} to {goal} at time {start_time}")
+        logging.info(f"Robot {robot_id}: Finding path from {start} to {goal} at time {start_time}")
         open_set = [(0, start, [start], 0, [start_time])]
         closed_set = set()
         g_scores = {start: 0}
@@ -188,7 +200,7 @@ class RobotPathFinder:
             f_score, current, path, cost, arrival_times = heappop(open_set)
 
             if current == goal:
-                print(f"Robot {robot_id}: Path found: {path}")
+                logging.info(f"Robot {robot_id}: Path found: {path}")
                 return path, cost, arrival_times
 
             if current in closed_set:
@@ -198,7 +210,7 @@ class RobotPathFinder:
             current_time = arrival_times[-1]
 
             neighbors = self.nav_graph.graph.get(current, [])
-            print(f"Robot {robot_id}: At vertex {current}, neighbors: {neighbors}")
+            logging.info(f"Robot {robot_id}: At vertex {current}, neighbors: {neighbors}")
             for next_node, lane_distance in neighbors:
                 if next_node in closed_set:
                     continue
@@ -217,14 +229,14 @@ class RobotPathFinder:
                         new_arrival_times = arrival_times + [estimated_arrival]
                         heappush(open_set, (f_score, next_node, new_path, new_cost, new_arrival_times))
                 else:
-                    print(f"Robot {robot_id}: Cannot reserve lane {lane_id} from {current} to {next_node} at time {current_time}")
+                    logging.info(f"Robot {robot_id}: Cannot reserve lane {lane_id} from {current} to {next_node} at time {current_time}")
 
-        print(f"Robot {robot_id}: No path found from {start} to {goal}")
+        logging.info(f"Robot {robot_id}: No path found from {start} to {goal}")
         return [], 0.0, []
 
 class Robot:
     def __init__(self, robot_spec: RobotSpec, canvas: tk.Canvas,
-                 nav_graph: NavigationGraph, traffic_manager: TrafficManager):
+                 nav_graph: NavigationGraph, traffic_manager: TrafficManager, log_callback=None):
         self.id = robot_spec.id
         self.current_vertex = robot_spec.start_vertex
         self.path = []
@@ -236,6 +248,7 @@ class Robot:
         self.speed = robot_spec.speed
         self.color = robot_spec.color
         self.battery = robot_spec.battery
+        self.log_callback = log_callback  # Callback to update GUI logs
 
         self.pos_x = nav_graph.vertices[robot_spec.start_vertex]['x'] * 50 + 200
         self.pos_y = -nav_graph.vertices[robot_spec.start_vertex]['y'] * 50 + 200
@@ -244,10 +257,20 @@ class Robot:
         self.label = canvas.create_text(self.pos_x, self.pos_y-20, text=f"R{self.id}", font=("Arial", 10, "bold"))
         self.path_line = None
 
-        self.battery_drain_rate = 0.1  # Reduced for testing
+        self.battery_drain_rate = 0.1
         self.battery_label = canvas.create_text(self.pos_x, self.pos_y+20,
                                             text=f"{self.battery:.0f}%", fill="green", font=("Arial", 8))
         self.waiting_indicator = None
+
+        # Log robot creation
+        vertex_name = self.nav_graph.vertices[self.current_vertex]['meta'].get('name', self.current_vertex)
+        self._log(f"Robot {self.id} spawned at vertex {self.current_vertex} ({vertex_name})")
+
+    def _log(self, message: str):
+        """Log a message to both the file and the GUI (if callback exists)."""
+        logging.info(message)
+        if self.log_callback:
+            self.log_callback(message)
 
     def move_to(self, goal: str):
         path_finder = RobotPathFinder(self.nav_graph, self.traffic_manager)
@@ -255,6 +278,7 @@ class Robot:
         self.path, _, self.arrival_times = path_finder.find_shortest_path(
             self.current_vertex, goal, self.id, current_time, self.speed)
 
+        goal_name = self.nav_graph.vertices[goal]['meta'].get('name', goal)
         if self.path:
             self.status = "moving"
             self._update_label()
@@ -263,17 +287,21 @@ class Robot:
                 self.canvas.delete(self.path_line)
 
             path_coords = []
+            path_names = []
             for vertex_id in self.path:
                 x = self.nav_graph.vertices[vertex_id]['x'] * 50 + 200
                 y = -self.nav_graph.vertices[vertex_id]['y'] * 50 + 200
                 path_coords.extend([x, y])
+                vertex_name = self.nav_graph.vertices[vertex_id]['meta'].get('name', vertex_id)
+                path_names.append(vertex_name)
 
             if len(path_coords) >= 4:
                 self.path_line = self.canvas.create_line(path_coords, fill=self.color, dash=(4, 2), width=2)
 
+            self._log(f"Robot {self.id}: Assigned task to move to vertex {goal} ({goal_name}), path: {path_names}")
             self._animate_movement(1)
         else:
-            print(f"Robot {self.id}: No path found to {goal}, retrying in 1 second...")
+            self._log(f"Robot {self.id}: No path found to vertex {goal} ({goal_name}), retrying in 1 second...")
             self.status = "waiting"
             self._update_label()
             self._start_waiting_indicator()
@@ -286,11 +314,12 @@ class Robot:
             self._stop_waiting_indicator()
 
             current_vertex_data = self.nav_graph.vertices[self.current_vertex]
+            vertex_name = current_vertex_data['meta'].get('name', self.current_vertex)
             if current_vertex_data['meta'].get('is_charger', False):
                 self.status = "charging"
                 self._update_label()
                 self._charge_battery()
-            print(f"Robot {self.id}: Reached destination {self.current_vertex}, status: {self.status}")
+            self._log(f"Robot {self.id}: Reached destination vertex {self.current_vertex} ({vertex_name}), status: {self.status}")
             return
 
         next_vertex = self.path[path_idx]
@@ -307,27 +336,28 @@ class Robot:
         travel_time = lane_distance / self.speed
 
         current_time = self.traffic_manager.current_time
-        print(f"Robot {self.id}: Attempting to move from {self.current_vertex} to {next_vertex} (lane {lane_id})")
+        next_vertex_name = self.nav_graph.vertices[next_vertex]['meta'].get('name', next_vertex)
+        self._log(f"Robot {self.id}: Attempting to move from vertex {self.current_vertex} to {next_vertex} ({next_vertex_name}) (lane {lane_id})")
         if not self.traffic_manager.reserve_lane(lane_id, self.id, current_time, current_time + travel_time):
             self.status = "waiting"
             self._update_label()
             self._start_waiting_indicator()
             self.traffic_manager.add_to_waiting_queue(self.current_vertex, self.id, current_time)
-            print(f"Robot {self.id}: Waiting at {self.current_vertex} for lane {lane_id}")
+            self._log(f"Robot {self.id}: Waiting at vertex {self.current_vertex} for lane {lane_id}")
 
             def check_lane_availability():
                 self.traffic_manager.update_time(time.time())
                 current_time = self.traffic_manager.current_time
-                print(f"Robot {self.id}: Checking lane {lane_id} availability at time {current_time}")
+                self._log(f"Robot {self.id}: Checking lane {lane_id} availability at time {current_time}")
                 if self.traffic_manager.reserve_lane(lane_id, self.id, current_time, current_time + travel_time):
                     self.traffic_manager.remove_from_waiting_queue(self.current_vertex, self.id)
                     self.status = "moving"
                     self._update_label()
                     self._stop_waiting_indicator()
-                    print(f"Robot {self.id}: Lane {lane_id} now available, resuming movement")
+                    self._log(f"Robot {self.id}: Lane {lane_id} now available, resuming movement")
                     self._animate_movement(path_idx)
                 else:
-                    print(f"Robot {self.id}: Lane {lane_id} still unavailable, waiting...")
+                    self._log(f"Robot {self.id}: Lane {lane_id} still unavailable, waiting...")
                     self.canvas.after(500, check_lane_availability)
 
             self.canvas.after(500, check_lane_availability)
@@ -342,7 +372,8 @@ class Robot:
             if closest_charger and closest_charger != self.current_vertex:
                 self.status = "seeking_charger"
                 self._update_label()
-                print(f"Robot {self.id}: Low battery ({self.battery:.0f}%), seeking charger at {closest_charger}")
+                charger_name = self.nav_graph.vertices[closest_charger]['meta'].get('name', closest_charger)
+                self._log(f"Robot {self.id}: Low battery ({self.battery:.0f}%), seeking charger at vertex {closest_charger} ({charger_name})")
                 self.move_to(closest_charger)
                 return
 
@@ -351,7 +382,7 @@ class Robot:
 
             if count >= steps:
                 self.current_vertex = next_vertex
-                print(f"Robot {self.id}: Moved to {self.current_vertex}, continuing to next vertex")
+                self._log(f"Robot {self.id}: Moved to vertex {self.current_vertex} ({next_vertex_name}), continuing to next vertex")
                 self._animate_movement(path_idx + 1)
                 return
 
@@ -364,7 +395,7 @@ class Robot:
             delay = 50 / self.speed
             self.canvas.after(int(delay), step, count + 1)
 
-        print(f"Robot {self.id}: Starting movement to {next_vertex}")
+        self._log(f"Robot {self.id}: Starting movement to vertex {next_vertex} ({next_vertex_name})")
         step()
 
     def _start_waiting_indicator(self):
@@ -418,6 +449,8 @@ class Robot:
             else:
                 self.status = "idle"
                 self._update_label()
+                vertex_name = self.nav_graph.vertices[self.current_vertex]['meta'].get('name', self.current_vertex)
+                self._log(f"Robot {self.id}: Finished charging at vertex {self.current_vertex} ({vertex_name}), battery at {self.battery:.0f}%")
 
     def _update_battery_display(self):
         if self.battery > 50:
@@ -481,8 +514,14 @@ class FleetManagementApp:
         self.traffic_info.pack(fill=tk.X, pady=2)
 
         tk.Label(info_frame, text="Robot Status", font=("Arial", 10, "bold")).pack()
-        self.status_display = tk.Text(info_frame, height=12, width=25)
+        self.status_display = tk.Text(info_frame, height=8, width=25)
         self.status_display.pack(fill=tk.X, pady=2)
+
+        # Add a new section for real-time logs
+        tk.Label(info_frame, text="Activity Log", font=("Arial", 10, "bold")).pack()
+        self.log_display = scrolledtext.ScrolledText(info_frame, height=10, width=25, wrap=tk.WORD)
+        self.log_display.pack(fill=tk.X, pady=2)
+        self.log_display.config(state='disabled')  # Make it read-only
 
         self.robots = {}
         self.robot_counter = 0
@@ -492,6 +531,14 @@ class FleetManagementApp:
         self.canvas.bind("<Button-1>", self.on_canvas_click)
 
         self.update_displays()
+
+    def log_to_gui(self, message: str):
+        """Add a log message to the GUI log display."""
+        self.log_display.config(state='normal')
+        timestamp = datetime.now().strftime('%H:%M:%S')
+        self.log_display.insert(tk.END, f"[{timestamp}] {message}\n")
+        self.log_display.see(tk.END)  # Auto-scroll to the bottom
+        self.log_display.config(state='disabled')
 
     def draw_environment(self):
         for lane in self.nav_graph.lanes:
@@ -562,7 +609,7 @@ class FleetManagementApp:
             battery=100.0
         )
 
-        robot = Robot(robot_spec, self.canvas, self.nav_graph, self.traffic_manager)
+        robot = Robot(robot_spec, self.canvas, self.nav_graph, self.traffic_manager, log_callback=self.log_to_gui)
         self.robots[robot_id] = robot
 
         self.update_status_display()
@@ -586,6 +633,9 @@ class FleetManagementApp:
             if robot.waiting_indicator:
                 self.canvas.delete(robot.waiting_indicator)
             del self.robots[robot_id]
+
+            self.log_to_gui(f"Robot {robot_id}: Removed from the system")
+            logging.info(f"Robot {robot_id}: Removed from the system")
 
             self.update_status_display()
             self.robot_count_label.config(text=f"Robots: {len(self.robots)}/{self.max_robots}")
@@ -661,10 +711,11 @@ if __name__ == "__main__":
     ]
 
     base_path = 'nav_graph_samples'
-    selected_file = json_files[1]
+    selected_file = json_files[0]
     json_path = os.path.join(base_path, selected_file)
 
     spawn_prefix = "m" if "nav_graph_1" in selected_file or "nav_graph_2" in selected_file else "p"
     
     print(f"Attempting to load JSON file: {json_path}")
+    logging.info(f"Starting application with JSON file: {json_path}")
     main(json_path, spawn_prefix)
