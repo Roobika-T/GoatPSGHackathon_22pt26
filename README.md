@@ -1,26 +1,25 @@
-Fleet Management System
+# Fleet Management System
 
-The Fleet Management System is a multi-robot coordination framework designed to navigate a structured environment efficiently. It ensures collision-free movement through lane reservations, queue-based waiting mechanisms, and dynamic task allocation. The system is built with a focus on scalability, real-time monitoring, and optimal pathfinding for a finite number of robots.
+The **Fleet Management System** is a multi-robot coordination framework designed to navigate a structured environment efficiently. It ensures collision-free movement through **lane reservations**, **queue-based waiting mechanisms**, and **dynamic task allocation**. The system is built with a focus on **scalability**, **real-time monitoring**, and **optimal pathfinding** for a finite number of robots.
 
-Demo vedio link : https://drive.google.com/file/d/1ERsoPKPq1699kIbkUajCJkFb7umSyccb/view?usp=sharing
+## **Demo Video**  
+[Watch the demo here](https://drive.google.com/file/d/1ERsoPKPq1699kIbkUajCJkFb7umSyccb/view?usp=sharing)
 
-Features
-Path Optimization – Implements the A algorithm* for computing the shortest path.
+## **Features**
 
-Collision Avoidance – Head-on collisions are prevented through a reservation-based system.
+- **Path Optimization** – Implements the **A* algorithm** for computing the shortest path.
+- **Collision Avoidance** – Head-on collisions are prevented through a **reservation-based system**.
+- **Dynamic Task Allocation** – Robots are assigned tasks in real-time, with dynamic reallocation when necessary.
+- **Finite Robot Management** – The system efficiently handles a limited number of robots without overloading computational resources.
+- **Traffic Management** – Lanes are reserved dynamically to ensure efficient movement and prevent deadlocks.
+- **Graphical User Interface (GUI)** – A Tkinter-based visualization tool displays real-time robot movement and traffic conditions.
+- **Logging & Debugging** – Key events, system actions, and robot movements are logged for analysis and debugging.
 
-Dynamic Task Allocation – Robots are assigned tasks in real-time, with dynamic reallocation when necessary.
+---
 
-Finite Robot Management – The system efficiently handles a limited number of robots without overloading computational resources.
+## **Project Structure**
 
-Traffic Management – Lanes are reserved dynamically to ensure efficient movement and prevent deadlocks.
-
-Graphical User Interface (GUI) – A Tkinter-based visualization tool displays real-time robot movement and traffic conditions.
-
-Logging & Debugging – Key events, system actions, and robot movements are logged for analysis and debugging.
-
-
-Project Structure
+```
 .
 ├── data
 │   └── nav_graph_samples
@@ -40,49 +39,68 @@ Project Structure
 │   └── utils
 │       └── robot_pathfinder.py     # A* algorithm for pathfinding
 └── README.md
+```
 
+---
 
-Installation
-Prerequisites
-Python 3.8+ (Recommended: Python 3.13)
+## **Installation**
 
-Tkinter (Pre-installed with Python on most systems)
+### **Prerequisites**
 
-Pip package manager
+- Python **3.8+** (Recommended: Python 3.13)
+- Tkinter (Pre-installed with Python on most systems)
+- Pip package manager
 
-Setup
+### **Setup**
+
 Clone the repository and install the required dependencies:
+
+```bash
 git clone https://github.com/your-repository/fleet-management-system.git
 cd fleet-management-system
 pip install -r requirements.txt
+```
 
-requirements.txt
+#### **Example `requirements.txt`**
+
+```
 tkinter
+```
 
-Usage
-1. Configure the Navigation Graph
-Place the required JSON-based navigation graphs in data/nav_graph_samples/.
+*(Add any additional dependencies as required.)*
 
-Modify src/main.py if a different graph file needs to be used.
+---
 
-2. Run the Application
-   python3 src/main.py
-   
-This will launch the GUI, where users can:
+## **Usage**
 
-View the navigation graph (nodes, lanes, and connectivity).
+### **1. Configure the Navigation Graph**
+- Place the required JSON-based navigation graphs in `data/nav_graph_samples/`.
+- Modify `src/main.py` if a different graph file needs to be used.
 
-Add and remove robots dynamically.
+### **2. Run the Application**
 
-Assign tasks and observe real-time path updates.
+```bash
+python3 src/main.py
+```
 
-Monitor traffic reservations to prevent deadlocks.
+This will launch the **GUI**, where users can:
 
-Logging & Debugging
+- View the **navigation graph** (nodes, lanes, and connectivity).
+- Add and remove robots dynamically.
+- Assign tasks and observe **real-time path updates**.
+- Monitor **traffic reservations** to prevent deadlocks.
 
-All robot movements, lane reservations, and system events are logged in:
+---
 
-src/logs/fleet_logs.txt
+## **Logging & Debugging**
+
+All **robot movements, lane reservations, and system events** are logged in:
+
+`src/logs/fleet_logs.txt`
 
 These logs provide valuable insights into system behavior and can be used for debugging and performance analysis.
+
+---
+
+This README is formatted for **professional documentation** and is ready for **GitHub deployment**.
 
