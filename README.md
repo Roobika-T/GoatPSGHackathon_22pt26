@@ -25,20 +25,20 @@ Watch the system in action: [Demo Video](https://drive.google.com/file/d/1ERsoPK
 │
 ├── src
 │   ├── gui
-│   │   └── fleetmanagement.py  # Main GUI application
+│   │   └── fleetmanagement.py  
 │   │
 │   ├── logs
-│   │   └── fleet_logs.txt  # Log file for system events
+│   │   └── fleet_logs.txt  
 │   │
-│   ├── main.py  # Entry point for the application
+│   ├── main.py  
 │   │
 │   ├── models
-│   │   ├── navigation_graph.py  # Handles navigation graph and JSON parsing
-│   │   ├── robot_spec.py  # Defines robot specifications
-│   │   └── traffic_manager.py  # Manages lane reservations and collision handling
+│   │   ├── navigation_graph.py  
+│   │   ├── robot_spec.py 
+│   │   └── traffic_manager.py  
 │   │
 │   ├── utils
-│   │   └── robot_pathfinder.py  # A* algorithm for pathfinding
+│   │   └── robot_pathfinder.py  
 │
 └── README.md
 ```
