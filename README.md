@@ -67,7 +67,7 @@ pip install -r requirements.txt
 tkinter
 ```
 
-*(Add any additional dependencies as required.)*
+
 
 ---
 
@@ -101,6 +101,4 @@ All **robot movements, lane reservations, and system events** are logged in:
 These logs provide valuable insights into system behavior and can be used for debugging and performance analysis.
 
 ---
-
-This README is formatted for **professional documentation** and is ready for **GitHub deployment**.
 
