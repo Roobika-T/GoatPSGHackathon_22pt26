@@ -1,104 +1,83 @@
-# Fleet Management System
+Fleet Management System
+The Fleet Management System is a multi-robot coordination framework designed to navigate a structured environment efficiently. It ensures collision-free movement using lane reservations, queue-based waiting mechanisms, and dynamic task allocation. The system is built with a focus on scalability, real-time monitoring, and optimal pathfinding for a finite number of robots.
 
-The **Fleet Management System** is a multi-robot coordination framework designed to navigate a structured environment efficiently. It ensures collision-free movement through **lane reservations**, **queue-based waiting mechanisms**, and **dynamic task allocation**. The system is built with a focus on **scalability**, **real-time monitoring**, and **optimal pathfinding** for a finite number of robots.
+Demo Video
+Watch the system in action:
+Demo Video
 
-## **Demo Video**  
-[Watch the demo here](https://drive.google.com/file/d/1ERsoPKPq1699kIbkUajCJkFb7umSyccb/view?usp=sharing)
+Features
+Path Optimization – Uses the A* algorithm to determine the shortest path.
 
-## **Features**
+Collision Avoidance – Prevents head-on collisions with a reservation-based system.
 
-- **Path Optimization** – Implements the **A* algorithm** for computing the shortest path.
-- **Collision Avoidance** – Head-on collisions are prevented through a **reservation-based system**.
-- **Dynamic Task Allocation** – Robots are assigned tasks in real-time, with dynamic reallocation when necessary.
-- **Finite Robot Management** – The system efficiently handles a limited number of robots without overloading computational resources.
-- **Traffic Management** – Lanes are reserved dynamically to ensure efficient movement and prevent deadlocks.
-- **Graphical User Interface (GUI)** – A Tkinter-based visualization tool displays real-time robot movement and traffic conditions.
-- **Logging & Debugging** – Key events, system actions, and robot movements are logged for analysis and debugging.
+Dynamic Task Allocation – Assigns and reallocates tasks to robots in real time.
 
----
+Finite Robot Management – Efficiently handles a limited number of robots without overloading computational resources.
 
-## **Project Structure**
+Traffic Management – Dynamically reserves lanes to optimize movement and prevent deadlocks.
 
-```
-.
-├── data
-│   └── nav_graph_samples
-│       ├── nav_graph_1.json
-│       ├── nav_graph_2.json
-│       └── nav_graph_3.json
-├── src
-│   ├── gui
-│   │   └── fleetmanagement.py      # Main GUI application
-│   ├── logs
-│   │   └── fleet_logs.txt          # Log file for system events
-│   ├── main.py                     # Entry point for the application
-│   ├── models
-│   │   ├── navigation_graph.py     # Handles navigation graph and JSON parsing
-│   │   ├── robot_spec.py           # Robot specification module
-│   │   └── traffic_manager.py      # Manages lane reservations and collision handling
-│   └── utils
-│       └── robot_pathfinder.py     # A* algorithm for pathfinding
-└── README.md
-```
+Graphical User Interface (GUI) – Uses Tkinter to provide a real-time visualization of robot movement and traffic.
 
----
+Logging & Debugging – Tracks key events, system actions, and robot movements for debugging and analysis.
 
-## **Installation**
+Project Structure
+The repository is organized as follows:
 
-### **Prerequisites**
+data/nav_graph_samples/ – Contains sample JSON navigation graphs.
 
-- Python **3.8+** (Recommended: Python 3.13)
-- Tkinter (Pre-installed with Python on most systems)
-- Pip package manager
+src/gui/fleetmanagement.py – Main GUI application for visualization.
 
-### **Setup**
+src/logs/fleet_logs.txt – Stores system event logs.
 
-Clone the repository and install the required dependencies:
+src/main.py – Entry point for the application.
 
-```bash
+src/models/navigation_graph.py – Handles navigation graph logic.
+
+src/models/robot_spec.py – Defines robot specifications.
+
+src/models/traffic_manager.py – Manages lane reservations and collision avoidance.
+
+src/utils/robot_pathfinder.py – Implements the A* pathfinding algorithm.
+
+Installation
+Prerequisites
+Python 3.8 or later (recommended: Python 3.13)
+
+Tkinter (pre-installed with most Python distributions)
+
+Pip package manager
+
+Setup
+To install and run the system:
+
+Clone the repository:
 git clone https://github.com/your-repository/fleet-management-system.git
+
+Navigate to the project directory:
 cd fleet-management-system
+
+Install dependencies:
 pip install -r requirements.txt
-```
 
-#### **Example `requirements.txt`**
+Configuration
+The navigation graphs should be placed in the data/nav_graph_samples/ directory.
 
-```
-tkinter
-```
+If needed, modify src/main.py to specify a different graph file.
 
+Running the Application
+To start the system, use:
 
-
----
-
-## **Usage**
-
-### **1. Configure the Navigation Graph**
-- Place the required JSON-based navigation graphs in `data/nav_graph_samples/`.
-- Modify `src/main.py` if a different graph file needs to be used.
-
-### **2. Run the Application**
-
-```bash
 python3 src/main.py
-```
 
-This will launch the **GUI**, where users can:
+Once the GUI opens, users can:
 
-- View the **navigation graph** (nodes, lanes, and connectivity).
-- Add and remove robots dynamically.
-- Assign tasks and observe **real-time path updates**.
-- Monitor **traffic reservations** to prevent deadlocks.
+View the navigation graph with nodes, lanes, and connectivity.
 
----
+Dynamically add or remove robots.
 
-## **Logging & Debugging**
+Assign tasks and monitor real-time updates.
 
-All **robot movements, lane reservations, and system events** are logged in:
+Observe traffic management and lane reservations to prevent deadlocks.
 
-`src/logs/fleet_logs.txt`
-
-These logs provide valuable insights into system behavior and can be used for debugging and performance analysis.
-
----
-
+Logging & Debugging
+All important system events, including robot movements and lane reservations, are logged in src/logs/fleet_logs.txt. These logs can be useful for debugging and analyzing system behavior.
