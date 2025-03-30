@@ -53,8 +53,8 @@ Watch the system in action: [Demo Video](https://drive.google.com/file/d/1ERsoPK
 ### Setup
 Clone the repository and install the dependencies:
 ```sh
-git clone https://github.com/your-repository/fleet-management-system.git
-cd fleet-management-system
+git clone https://github.com/Roobika-T/GoatPSGHackathon_22pt26.git
+cd GoatPSGHackathon_22pt26
 pip install -r requirements.txt
 ```
 
