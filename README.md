@@ -1,84 +1,89 @@
-Fleet Management System
+# Fleet Management System
 
-The Fleet Management System is a multi-robot coordination framework designed to navigate a structured environment efficiently. It ensures collision-free movement using lane reservations, queue-based waiting mechanisms, and dynamic task allocation. The system is built with a focus on scalability, real-time monitoring, and optimal pathfinding for a finite number of robots.
+## Overview
+The Fleet Management System is a multi-robot coordination framework designed to efficiently navigate a structured environment. It prevents collisions using a reservation-based system, dynamically allocates tasks to robots, and ensures smooth traffic flow within a finite robot fleet.
 
-Demo Video
-Watch the system in action:
-Demo Video
+### Demo Video
+Watch the system in action: [Demo Video](https://drive.google.com/file/d/1ERsoPKPq1699kIbkUajCJkFb7umSyccb/view?usp=sharing)
 
-Features
-Path Optimization – Uses the A* algorithm to determine the shortest path.
+## Features
+- **Path Optimization** – Uses the A* algorithm to compute the shortest paths.
+- **Collision Avoidance** – Prevents head-on collisions with a lane reservation mechanism.
+- **Dynamic Task Allocation** – Assigns and reallocates tasks in real-time.
+- **Finite Robot Management** – Optimized for handling a limited number of robots.
+- **Traffic Management** – Dynamically reserves lanes to prevent congestion and deadlocks.
+- **Graphical User Interface (GUI)** – A Tkinter-based visualization tool to monitor robot movements and traffic conditions.
+- **Logging & Debugging** – Logs key events and robot activities for analysis and troubleshooting.
 
-Collision Avoidance – Prevents head-on collisions with a reservation-based system.
+## Project Structure
+```
+├── data
+│   └── nav_graph_samples
+│       ├── nav_graph_1.json
+│       ├── nav_graph_2.json
+│       └── nav_graph_3.json
+│
+├── src
+│   ├── gui
+│   │   └── fleetmanagement.py  # Main GUI application
+│   │
+│   ├── logs
+│   │   └── fleet_logs.txt  # Log file for system events
+│   │
+│   ├── main.py  # Entry point for the application
+│   │
+│   ├── models
+│   │   ├── navigation_graph.py  # Handles navigation graph and JSON parsing
+│   │   ├── robot_spec.py  # Defines robot specifications
+│   │   └── traffic_manager.py  # Manages lane reservations and collision handling
+│   │
+│   ├── utils
+│   │   └── robot_pathfinder.py  # A* algorithm for pathfinding
+│
+└── README.md
+```
 
-Dynamic Task Allocation – Assigns and reallocates tasks to robots in real time.
+## Installation
 
-Finite Robot Management – Efficiently handles a limited number of robots without overloading computational resources.
+### Prerequisites
+- Python 3.8+ (Recommended: Python 3.13)
+- Tkinter (Pre-installed with Python on most systems)
+- Pip package manager
 
-Traffic Management – Dynamically reserves lanes to optimize movement and prevent deadlocks.
-
-Graphical User Interface (GUI) – Uses Tkinter to provide a real-time visualization of robot movement and traffic.
-
-Logging & Debugging – Tracks key events, system actions, and robot movements for debugging and analysis.
-
-Project Structure
-The repository is organized as follows:
-
-data/nav_graph_samples/ – Contains sample JSON navigation graphs.
-
-src/gui/fleetmanagement.py – Main GUI application for visualization.
-
-src/logs/fleet_logs.txt – Stores system event logs.
-
-src/main.py – Entry point for the application.
-
-src/models/navigation_graph.py – Handles navigation graph logic.
-
-src/models/robot_spec.py – Defines robot specifications.
-
-src/models/traffic_manager.py – Manages lane reservations and collision avoidance.
-
-src/utils/robot_pathfinder.py – Implements the A* pathfinding algorithm.
-
-Installation
-Prerequisites
-Python 3.8 or later (recommended: Python 3.13)
-
-Tkinter (pre-installed with most Python distributions)
-
-Pip package manager
-
-Setup
-To install and run the system:
-
-Clone the repository:
+### Setup
+Clone the repository and install the dependencies:
+```sh
 git clone https://github.com/your-repository/fleet-management-system.git
-
-Navigate to the project directory:
 cd fleet-management-system
-
-Install dependencies:
 pip install -r requirements.txt
+```
 
-Configuration
-The navigation graphs should be placed in the data/nav_graph_samples/ directory.
+### Required Dependencies
+Ensure the following dependencies are installed (listed in `requirements.txt`):
+```sh
+tkinter
+```
 
-If needed, modify src/main.py to specify a different graph file.
+## Usage
 
-Running the Application
-To start the system, use:
+### Configuring the Navigation Graph
+- Place JSON-based navigation graphs inside `data/nav_graph_samples/`.
+- Modify `src/main.py` to use a different graph file if needed.
 
+### Running the Application
+```sh
 python3 src/main.py
+```
+This will launch the GUI, where you can:
+- View the navigation graph (nodes, lanes, and connectivity)
+- Add and remove robots dynamically
+- Assign tasks and observe real-time path updates
+- Monitor traffic reservations to prevent deadlocks
 
-Once the GUI opens, users can:
+## Logging & Debugging
+All system activities, including robot movements and lane reservations, are logged in:
+```sh
+src/logs/fleet_logs.txt
+```
+These logs help analyze system behavior and troubleshoot potential issues.
 
-View the navigation graph with nodes, lanes, and connectivity.
-
-Dynamically add or remove robots.
-
-Assign tasks and monitor real-time updates.
-
-Observe traffic management and lane reservations to prevent deadlocks.
-
-Logging & Debugging
-All important system events, including robot movements and lane reservations, are logged in src/logs/fleet_logs.txt. These logs can be useful for debugging and analyzing system behavior.
